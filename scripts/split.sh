@@ -13,8 +13,9 @@ echo Wrote $(cat output/Gender_male.tsv | wc -l) lines to output/Gender_male.tsv
 WC=(under_weight normal overweight obese)
 for i in "${!WC[@]}"; do 
   outfile="output/WeightClass_${WC[$i]}.tsv"
+  echo "Gender	Age	Height	Weight	FHO	FAVC	FCVC	NCP	CAEC	SMOKE	CH2O	SCC	FAF	TUE	CALC	MTRANS	WeightClass" > $outfile
   idx=$(echo $((i+1)))
-  awk -F "\t" -v idx=$idx '$17~idx{print}' $1 > $outfile
+  awk -F "\t" -v idx=$idx '$17~idx{print}' $1 >> $outfile
   echo Wrote $(cat $outfile | wc -l) lines to $outfile
 done
 
