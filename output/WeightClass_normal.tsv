@@ -1,0 +1,287 @@
+Male	25	1.79	72			2	3	Sometimes	no	2	no	1		Sometimes	Public_Transportation	2
+Female	17	1.75	57	yes		3	3		no		no	0	1		Public_Transportation	2
+Female		1.6	59				3	Sometimes	no	2	no	1	2		Public_Transportation	2
+Male	23	1.72	70						no		no	3	1	Frequently	Public_Transportation	2
+Female		1.57			yes	2		Always	no	2	no	0			Public_Transportation	2
+Female			67	yes	yes	3	1	Sometimes	no	2					Walking	2
+Female	23		60	yes	no	2	3	Sometimes	no	2	no	3		Sometimes	Public_Transportation	2
+Male	19	1.69	60		yes	2	3		no	1	no		1	Sometimes	Public_Transportation	2
+Female	22	1.58	58	yes		2	1	Sometimes	no			0	0	no		2
+Female	27	1.6	61	no			3		no	2	no	0		Sometimes		2
+Female	21	1.69	63	no	yes	3	1				no	0		Sometimes	Public_Transportation	2
+Male	17	1.67	60	no	no	2	4	Always	no	2	no	0		no	Public_Transportation	2
+Female	22	1.65	60		yes	3	3		no	2	no	1	0		Automobile	2
+Female	33			yes	yes	2	3	Sometimes		2		1				2
+Male	18	1.74	70	no							no	1			Public_Transportation	2
+Male	18		64			3	3	Sometimes	no			0	1	no	Public_Transportation	2
+Female	19	1.64	53	yes		3	3	Sometimes		1	no	1		no	Public_Transportation	2
+Male	26	1.72		yes	yes	2	3	Sometimes	no	2	no	0		Sometimes	Walking	2
+Female		1.55	58	no		2		Sometimes	no	1	no	1	0	Sometimes	Public_Transportation	2
+Female		1.56	50	no	yes	2	1	Sometimes	no	1	no	0	2	no	Public_Transportation	2
+Female	22		65	yes		2	3		no	2	no	1	1	Sometimes		2
+Female	18		55	yes	yes		3		no	1		1	1			2
+Female	19	1.65		no			1		no	3	yes	1	0		Public_Transportation	2
+Male	26		70	yes	no	3	1		no		no			Frequently	Public_Transportation	2
+Male	21		65	yes	yes	2	1	Frequently	no	2		1	2	Always	Walking	2
+Male	21	1.8	62	yes	yes			Sometimes	no		no	1	0	no		2
+Male	14	1.71	72	yes		3	3		no	3				no	Walking	2
+Male	18	1.76	70	yes			4		no		no	2				2
+Female	20	1.66	60	yes	no	3	3	Sometimes	no	2	no		0	Sometimes	Walking	2
+Female	18	1.55	56	no	yes	2		Sometimes	no	1	no	0	0	no	Automobile	2
+Male	19		82	yes	yes	3	3		no	2	no	2	0	Sometimes	Public_Transportation	2
+Female			52	no	yes	3		Sometimes	no	2	no	2			Public_Transportation	2
+Male	21	1.85	83	yes	yes	2	1	Frequently	no		no	1	0	no	Public_Transportation	2
+Female	21	1.55	49	yes	yes	2	3	Sometimes	no	3				Sometimes	Public_Transportation	2
+Male	22	1.65	56	no	no	3	3	Sometimes	no	3	no	2			Public_Transportation	2
+Male	22	1.7			no	2	3		no	2	no	0		no		2
+Male	23	1.62		yes	yes			Sometimes	no	2	no	1	1	Sometimes		2
+Male		1.73	70		yes	3	3	Frequently	no		no	2	1	Sometimes	Public_Transportation	2
+Female	18	1.57	48			3	1	Always	no			1		no		2
+Female	21	1.53	53	no	yes	3	3	Sometimes	no	2	no		1		Public_Transportation	2
+Male	24	1.7	68	no	yes	3	3	Sometimes		2	no	0		Sometimes	Motorbike	2
+Male			68	no	no		4	Frequently	no		no		1	Sometimes	Public_Transportation	2
+Male	21	1.8	73	yes	yes		3	Always	no	2	no	3	1	Sometimes	Public_Transportation	2
+Female	19	1.51			yes		4	Sometimes			no		0		Public_Transportation	2
+Male		1.8	60		yes	2		Sometimes	no	1	no	1	1	no	Public_Transportation	2
+Male	23	1.8	77		no	2	3	Sometimes	no	2	no	2				2
+Female		1.62	58	no	yes			Sometimes		2	no	1	1	Sometimes	Public_Transportation	2
+Male	20			no	yes	2	3	Frequently	no		no	1	1	Sometimes		2
+Male	21	1.82	67	no	yes	2	4	Always	yes	3		3	2	Sometimes		2
+Male	25			no	yes	2		Frequently		2				no	Public_Transportation	2
+Male	19	1.8			yes		1	Always	no	1	yes	0			Motorbike	2
+Female	20	1.6					3	Sometimes	no	1	no	0				2
+Male	25			no			3	Frequently	no		yes		0	no	Public_Transportation	2
+Female		1.57		no		2	3	Sometimes	no		no	0	1			2
+Male	21		65		yes	2		Frequently	no			1	1		Public_Transportation	2
+Male	23	1.7			yes	3		Frequently	no		no		1		Public_Transportation	2
+Female			49	yes		2	1	no		2		2	0	no		2
+Male	18		80	yes		2	3	Sometimes	no	2		3	2	no		2
+Male		1.78	73	no	yes		3	Sometimes		2	no	3	1	Sometimes		2
+Female	22	1.65	58		yes	3		Frequently		2	no		0	Sometimes		2
+Female	21	1.66	57		yes	2	3	Frequently	no			1	1		Public_Transportation	2
+Male		1.71	71	no	yes	3				2	no	1	1	Sometimes	Public_Transportation	2
+Female	21	1.63		yes					yes	2		2	0	Sometimes	Public_Transportation	2
+Female	26	1.59	47	yes	yes	2			no	2		0	2	Sometimes		2
+Male	17	1.75	70	yes	no	2			no	1			2	Sometimes	Walking	2
+Female			51		yes	2			no	1			1	Sometimes	Public_Transportation	2
+Male	38	1.75	75		no	3	3	Frequently	no	1	no			no	Automobile	2
+Female	21	1.54	47	yes	no		3	Always	no	1	no	2		no	Public_Transportation	2
+Male	29	1.62	53		yes		3	Sometimes	no		no		0	Sometimes	Automobile	2
+Female		1.67	64	no	yes	3	3		no			2	1	Sometimes		2
+Female	32	1.57	57	yes	yes		3	Sometimes	no			0	0		Automobile	2
+Male	25	1.87			yes	3	3	Always	no	2			0	Frequently	Public_Transportation	2
+Female		1.61				3	1	Frequently	no	2	no	1		Frequently	Public_Transportation	2
+Female	23	1.68	67	yes			3	Frequently	no	1	no	0	0	Sometimes		2
+Female	21	1.66	59		yes	1	3			2	yes	3		no	Automobile	2
+Male	18		69.5	no			3	Frequently	no	3	no	2	2	no	Public_Transportation	2
+Female	17	1.58	50	no	yes	1	4	Frequently	no	2	no	1			Public_Transportation	2
+Male	20	1.77			yes	1		Sometimes	no	2	no	1	1	Sometimes	Public_Transportation	2
+Female	18		58		yes	3	3	Sometimes		1	no		2	no	Automobile	2
+Male	20	1.8				2			no	1	no		0	Sometimes	Motorbike	2
+Female	16	1.66	58	no	no		1	Sometimes	no	1		0	1			2
+Male		1.72	72	yes	yes	3	3	Always	no		yes		0	Sometimes	Automobile	2
+Male	17	1.8		yes	no			Sometimes	no			2	1	Sometimes	Public_Transportation	2
+Female	33		48		no		3	Sometimes			no	1	0			2
+Female	18		56	yes		3	3	Frequently	no	1	yes		1	no	Public_Transportation	2
+Female	21		51	no	yes	2	1	Sometimes		1	no	1	1	no		2
+Male		1.8	60	yes	no	2	3	no	no	3	no	0		Sometimes	Public_Transportation	2
+Male	21	1.67		yes	yes	3	1	Always	no	2	no		1	no	Public_Transportation	2
+Male			79	yes	no	3	1	Sometimes		2	no		0	Sometimes	Public_Transportation	2
+Female	21	1.5		yes	no	1	1			2	no	3	0	no	Public_Transportation	2
+Female	26		63	no	yes	3	3	Sometimes	no	1		1		no	Walking	2
+Female	18	1.59	53	no	no	1		Sometimes		1	no	1	2	no	Public_Transportation	2
+Female	38	1.64	59.8	yes	yes	2	3		no	2	no	2	0	no		2
+Female	17	1.53	55	yes	yes	2	3		no	1		0		no	Public_Transportation	2
+Male	26	1.9	80	yes		2	3	Frequently	no	1	yes					2
+Male	26	1.7	72		yes	2	3	Always	no			0	0	Sometimes	Public_Transportation	2
+Female	21		48	no		2	3	Sometimes			no	1		Sometimes		2
+Female	17		65		yes		1				no	1	1	no	Public_Transportation	2
+Male	21	1.88		yes		3	3		no		no	2	1	Sometimes	Walking	2
+Male		1.7	70		yes	3	3	Sometimes	no					Sometimes	Walking	2
+Female	20	1.6	57			3		Always	no	2	no	1	0	no	Walking	2
+Female	20					3	1	Sometimes	no	1		1	0		Public_Transportation	2
+Female	38	1.55	59			3		Sometimes					1	Frequently		2
+Female		1.5					3	Sometimes	no	1		0	0	Sometimes	Public_Transportation	2
+Male	17	1.69		no			3		no			2	1	Sometimes	Walking	2
+Female	19	1.6	60	no			3	Frequently	no	2	no	0	1	Sometimes	Public_Transportation	2
+Male		1.83			yes	2	3		no	2	no	1		Sometimes		2
+Female			56	no			1	Sometimes	no			0	2	Sometimes	Public_Transportation	2
+Male	25	1.66	68	no	yes		3		yes			1		Sometimes	Public_Transportation	2
+Male	20		66	no	no	2				2	no	1	1		Public_Transportation	2
+Male	21	1.81	80			1	3		no	2	no		0	no		2
+Male	22		68	yes	yes	2	3	Sometimes	no	2	no	1	1	no		2
+Female			55			3	3		no	2	no	1	0	Sometimes	Motorbike	2
+Female	21	1.62	64	yes	no	2		Sometimes	no	2	no					2
+Male	20	1.65	58	no	yes	2	3	Sometimes	no	2	no	3	1			2
+Male	19	1.67	68	no	yes		3	Sometimes	no	2	no	1	0	Sometimes		2
+Female	17	1.7	56	yes	yes	1	3	Sometimes	no		no		1	no	Automobile	2
+Male	17		56	yes	yes	2	3	Sometimes		2	no		1	no	Public_Transportation	2
+Female	18			yes	yes	1	3	Sometimes	no					Sometimes		2
+Female	24	1.77			no	2	3	Sometimes	no	3	no	1	1	Sometimes	Walking	2
+Female	18	1.64			yes	2	3	Sometimes	no	1	no			Sometimes	Public_Transportation	2
+Female	22	1.7	66	yes	no	3	3		no	2		2	1			2
+Male	26				yes	2		Sometimes	yes	1	no	0	0		Public_Transportation	2
+Male		1.67	60	yes	yes		3	Frequently	no	2	no	2		Sometimes	Public_Transportation	2
+Male	23	1.68			no		4			2	no	0	0		Automobile	2
+Male	18		55.3	yes	yes	3	3		no		no	3	0	Sometimes		2
+Male	23				yes		3	Sometimes	no	2	no	2	2			2
+Male		1.68		yes	yes		3		no	2	no	0	2	Sometimes	Automobile	2
+Female		1.62	52	no		3		Frequently	no	1	no	3	1	no		2
+Female		1.55	45		yes	2				2	no	1		no		2
+Male	19				yes	2		Sometimes	no	2	no	2	1			2
+Male	21	1.85		yes	yes	2	3	Sometimes	no	2			1	Sometimes		2
+Female	23	1.66	60			2	1		no	1	no	1	1	Sometimes	Public_Transportation	2
+Male	22		70		yes	2	3	Sometimes			no		1	Sometimes		2
+Female	20	1.56			yes		3		no		no		0			2
+Male		1.64		yes	no	2	3	Sometimes	no	1	no	0	1	no	Public_Transportation	2
+Female		1.63	51	yes		1	3		no	1		1		Sometimes	Public_Transportation	2
+Female	22	1.65	65			2	3	Frequently	no	2	yes		0	no	Automobile	2
+Female		1.52	56		no	3	3			3		3	0	Sometimes		2
+Male	23	1.62	58	no	no	2	3	Sometimes	no	1	no		0	no	Public_Transportation	2
+Male	21		75	yes	yes		3	Frequently	no	1		2		Sometimes	Public_Transportation	2
+Male	22					2	3	Sometimes	no	2	no	3	0	Sometimes	Public_Transportation	2
+Male	23		60	yes		2	3	Sometimes	no	2	no	0	0	Sometimes	Public_Transportation	2
+Male	20			yes	no	3	3		yes		no		1	Sometimes	Public_Transportation	2
+Male			80	yes	yes	2	3		no	1			1		Public_Transportation	2
+Male	20	1.78	68	no	no	2	1	Frequently	no	3	yes	2	1	no		2
+Female	24		51	no	no	3	3			2	no	2		Frequently	Public_Transportation	2
+Male	23	1.72	66	yes		2	3	Sometimes	no	2		0	1	Sometimes	Walking	2
+Female	33	1.59	60	no	yes	3	1		no	2	no				Public_Transportation	2
+Male	19	1.69	65	no	yes	2	3	Frequently	no		no	1	1	Sometimes	Public_Transportation	2
+Female	25	1.57	55	no	yes	2	1	Sometimes	no		no	2	0	Sometimes		2
+Female		1.56		no	yes	2	3		no	1	yes			no		2
+Male			74	yes	no		1	Sometimes	no	3	no		1	Sometimes		2
+Female	22		56	yes	no	3	3	Sometimes	no	2		0		no	Public_Transportation	2
+Male		1.83	71		yes	2		Sometimes	no	2	no	3	2	no	Automobile	2
+Male	18	1.93	86		no		4	Always	no	2	no	2	0	Sometimes	Walking	2
+Female	22		63	yes	yes	3	3	Frequently	no	3		1		no	Public_Transportation	2
+Female	24	1.65	60	yes	no	2	3		no	3			0	no		2
+Female		1.56			yes			Always	no	2	no			Sometimes	Public_Transportation	2
+Male	18	1.85	66	no	yes	2	3	Frequently	no	1		1	1	Sometimes	Public_Transportation	2
+Female	21	1.55		no	yes	2	3	Sometimes		2	no			Sometimes		2
+Male		1.6	50		no	2	4	Frequently	yes	2	no	3	2	no		2
+Female	23	1.7	56	no	no	3	4		no	3		3		no		2
+Female	25			no	yes	2	1		no	2	no	2		Sometimes	Public_Transportation	2
+Male	19	1.75	58	no	yes	2		Sometimes	no	2	no		0	Sometimes	Bike	2
+Female	19	1.63	58		no	3	3	Sometimes	no	2	yes	0	0	no	Public_Transportation	2
+Female	22	1.6		no	no	3	4			3	no		0			2
+Female	20	1.62	53	no	yes	3	1			3	no	1				2
+Female	21	1.6	61	no	yes		3	Sometimes	no	1		1		Sometimes	Public_Transportation	2
+Male	24	1.66	67	yes	yes	3	1		no		no		0	no	Public_Transportation	2
+Female				yes	no			Frequently	no	1	no	0	1	no	Automobile	2
+Female		1.55	57	no	yes	2		Frequently	no	2	yes		0			2
+Male	27	1.85	75	yes	yes	2	1		no	2		1		no	Walking	2
+Male	20	1.66			yes	2	4	Frequently	no		no					2
+Female		1.65	66		yes	3	3	Always	no	2			1		Public_Transportation	2
+Female	21	1.54	49	yes		2	1		no	2	yes	2	0	Sometimes	Public_Transportation	2
+Male		1.75	69	no	no	3	3			2	no	2	1			2
+Male	21		62	no	yes	3	4	Frequently	yes	2	no	0	0	Sometimes	Public_Transportation	2
+Female	25				no	2			no			2		Sometimes	Public_Transportation	2
+Female	18	1.56	55	no		2	3	Sometimes	no		no		0	Frequently		2
+Male	19		87	no	yes	2	4		no	2	no	3	1	Frequently	Automobile	2
+Female	51		50		no	3	3	Sometimes	yes	3	yes	2	0		Public_Transportation	2
+Male		1.8	72	yes		2	3	Sometimes	no		no	3	0	Sometimes	Automobile	2
+Male			75	yes	no	3	3	Always	no	3	yes	3	0	no	Bike	2
+Male			70	no	yes	3	3	Frequently	no			2	0	no		2
+Male		1.75	70		yes	3	4		no	2			1	no	Public_Transportation	2
+Male	19	1.78		no	yes	2	3		no	1	no		0	no	Public_Transportation	2
+Female		1.66	64	yes	yes	1	3	Sometimes		1			0	no	Public_Transportation	2
+Female	22			yes		2	3			2		1	1	Sometimes	Public_Transportation	2
+Male				yes	no				no	2	no	1	0	no	Public_Transportation	2
+Male	19	1.7	60	yes	yes	2		Sometimes	no	2	no	2	0	Sometimes	Public_Transportation	2
+Female	20	1.58	53.5	yes	yes		1		no	2	no		1			2
+Female	23	1.59	48	yes		2	1	Frequently	no	1	no			Sometimes	Public_Transportation	2
+Male	23		60	no	no	2		Frequently	no	2		0		no		2
+Male	23	1.75		no	yes			Sometimes	no		no	1	0	Frequently		2
+Male	21	1.8	72		yes	3		Sometimes	no		no	1	1			2
+Female	20	1.58			yes	2	4		no		no	1	1	no		2
+Male	21		70	yes	yes	3	3	Sometimes		3		0		Sometimes		2
+Male	22	1.67	62		yes	2	1		no	2	no	0	0	Sometimes		2
+Male	22	1.74	75	yes	yes	3				1	no	1		no	Automobile	2
+Female	25	1.56		no	yes	2				1		0	0	Sometimes	Public_Transportation	2
+Female	20			yes	yes	1	3	Always	no	2	no		2	no	Automobile	2
+Female	20	1.67		no			3	no	no	2	no	3				2
+Male	22	1.74	75	yes	yes	3	3	Frequently	no	1			0	no	Automobile	2
+Female	18		55	yes	yes	2	3	Frequently		1	no			no		2
+Female		1.5	44	no	yes	2		Sometimes			no	0	0	Sometimes		2
+Male	17	1.72		no		2	3		no		no	3	1	no	Public_Transportation	2
+Female	23	1.6	52	no	yes	2	4	Frequently	no	2		2	1		Automobile	2
+Female	18	1.6		yes	yes	2			no	2	no	1	0	Sometimes	Walking	2
+Female	21	1.72	66.5	yes	yes		4	Always	no	3	no		2	no	Public_Transportation	2
+Male	33	1.85	85		yes		3			2	no			Sometimes		2
+Male	18	1.72	55	no			4		no	2	no	2		Sometimes	Public_Transportation	2
+Female		1.56			yes		3	Sometimes	no		no	0	2	no	Public_Transportation	2
+Female	19	1.69	70	yes	no	2	1	no	no				0	no	Public_Transportation	2
+Male	16	1.82		yes	yes	2	3	Frequently	no	2	no		1	Sometimes		2
+Male	30	1.75	73		no		3	no	no	2			0	Sometimes		2
+Female	18	1.56	51	yes	yes	2		Frequently	no	2		1	0	Sometimes		2
+Female	29	1.74	72	yes	no	3	3	Always		2	no	0	0	Sometimes		2
+Female	19				yes	2	3	Always		2	no	2	1	Sometimes	Public_Transportation	2
+Female	30	1.62	59	yes	yes	3	3	Sometimes		2		2	0	Sometimes		2
+Female	18		50	no	yes	3	3	Sometimes	no			0	0	Sometimes	Automobile	2
+Female	21		54.5	yes	yes	3	3	Sometimes	no	3	no	0	1	Sometimes	Walking	2
+Male	23	1.65	67	yes		2	3				no	1	1	Sometimes	Public_Transportation	2
+Female	19	1.65		yes	yes	3	3	Frequently	yes		yes		2	Frequently	Public_Transportation	2
+Female	23	1.63	55	yes	no		3	no	no	2	yes	2	1	no	Public_Transportation	2
+Female	18	1.6	60	yes		3	1	Sometimes	no	1	yes		2	no	Walking	2
+Male	20	1.6	56	no	yes	2	3		no	2	no				Public_Transportation	2
+Female	31		63	yes		3	1	Frequently	no		no	1	1	Sometimes	Automobile	2
+Female		1.58	60	yes	no	3		Sometimes	no	1		2	0	Sometimes	Automobile	2
+Male		1.87	67	yes		3	3	Frequently	no		yes	1	1		Automobile	2
+Male		1.65			no	3	1	Frequently		1	no	0			Motorbike	2
+Female	20		60		yes	3	3	Sometimes	no	3	no	0	1	Sometimes	Public_Transportation	2
+Male	17	1.7	55	no	yes		3		no		no	3		Sometimes	Public_Transportation	2
+Male		1.66	62	yes		2	3	Sometimes	yes	2	no	1	1	Frequently	Public_Transportation	2
+Male	21	1.75	75	yes	yes	3			no	2	no	0	1			2
+Female	16	1.66		no		2	1		no		no	0	1	no	Walking	2
+Female	19			yes	yes	3	3		no	3	yes		1	no	Public_Transportation	2
+Male		1.75	74	yes		2	3	Sometimes	no	2		1	2		Bike	2
+Male	33	1.76	66.5		no	2	3	Sometimes	no	2	no	3	1	Sometimes	Automobile	2
+Male	23			yes	no	2	3	Sometimes	no	2	no	0	0		Public_Transportation	2
+Female	18		48	no	yes	2	3	Sometimes	no	2	no	1	0	no		2
+Female	24		48	no	yes			Sometimes	no	2		2	0	no		2
+Male			75	yes	no	3		Frequently	no				1	no	Automobile	2
+Male	25	1.78	78				1	Sometimes	no	2	no	2	1	Sometimes	Public_Transportation	2
+Male	18	1.78	64.4	yes	yes	3	3		no		no	3	2		Walking	2
+Female	21		66	yes		3	1		yes	3	no	0				2
+Male		1.82		yes	yes	1		Frequently			no		0	Sometimes	Public_Transportation	2
+Male	20	1.8	75	no			4	Always	no	3	no		0	Sometimes		2
+Female	26	1.65	60	no	no	3		Always			no	2		no	Walking	2
+Female	16	1.6	57	no	yes	3		Sometimes		1		3	0	no	Public_Transportation	2
+Female	22		49		no		1	Sometimes		2	no	3	0	no	Walking	2
+Female		1.6	55		yes	2	4	Frequently	no		no			Sometimes	Public_Transportation	2
+Male	18	1.7	55	yes	yes	2			no				0	Sometimes	Public_Transportation	2
+Female		1.61	64	yes	no	3	3		no	2	yes		1	Frequently	Public_Transportation	2
+Male	19			yes	no		3	Frequently	no	2						2
+Male			76	yes	yes	3				2		3		Sometimes		2
+Male	22	1.75	70	no	no	2	3	Sometimes			no		1	no		2
+Male		1.91	84		yes	3		Frequently	yes	2			2			2
+Male	18	1.7	60		yes	2	3	Sometimes		2	no			no	Public_Transportation	2
+Male	21		53	yes	yes	2	3	Sometimes	no	2	no	1		Sometimes	Public_Transportation	2
+Male	20			no	no	2	3		no	2	no	1				2
+Male	17	1.66	56		yes	1	3	Always		2		1	1	Sometimes		2
+Male	25	1.71	71			2	3			2	no	0			Motorbike	2
+Female		1.5			yes	3		Frequently					1	Sometimes	Public_Transportation	2
+Female	23	1.6		yes	no	3	3	Frequently	no	2	no	3			Walking	2
+Male	19			yes			3	Sometimes	no	3	no	2	1	Sometimes		2
+Female	33	1.55	55	yes	yes	3	1	Sometimes	no	3	no	2	1			2
+Male	20			no	yes	2	3	Sometimes	no		no	0		no		2
+Male	18	1.6	58		yes	2	3	Frequently		2	no	1		Sometimes		2
+Female	18	1.67		no		3	3		no				0			2
+Male	21	1.75	72	yes	yes	1	3	Frequently	no	3	no			Sometimes	Public_Transportation	2
+Female	23		59	no	no	3			no	2	no	1	2		Public_Transportation	2
+Female	17		53				3	Sometimes	no		no		2			2
+Female		1.6			yes	2			no		no	3	0		Public_Transportation	2
+Male		1.78	64		yes	3	3	Sometimes	no	2		1		Frequently	Public_Transportation	2
+Female	29	1.6	56	yes	no		3				no		1	Sometimes	Public_Transportation	2
+Male		1.6	50	no	no	2		Sometimes	no	1			0	Sometimes		2
+Female		1.6	51		yes	1			no	2	no	0	1	Sometimes	Automobile	2
+Male	22	1.65	62	no		2	4			2			0		Public_Transportation	2
+Male		1.77			yes		1	Sometimes	no	1	no		1	Sometimes		2
+Female	18	1.55	50	yes	yes	3		Frequently	no	1	no		2	no	Public_Transportation	2
+Male	22	1.84	84	yes		3	3	Frequently	no	2	yes	3	0	Sometimes	Public_Transportation	2
+Male		1.74		yes	yes	3	4	Sometimes	no		yes	2			Public_Transportation	2
+Male		1.88	79	no	no	2	3	Sometimes	no		no	3	0	Sometimes		2
+Male	20	1.72	70	yes	yes	3	3	Frequently	no			0	0	Sometimes	Public_Transportation	2
+Female			50		yes	2	3	Frequently		1		0	2		Public_Transportation	2
+Male	23		66	no	no	3	3		no	2	no	3	0		Public_Transportation	2
