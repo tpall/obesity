@@ -162,7 +162,8 @@ Just to visualize my knowledge of the variables, let’s create a graph.
 
 Notably:  
 - Obesity is defined by BMI\>30 and BMI of cause is calculated as
-$kg/m^2$. - WeightClass is determined by the body weight and height.
+$kg/m^2$.  
+- WeightClass is determined by the body weight and height.
 
 Let’s include weight and height for imputations, as we want to get as
 good/realistic dataset as possible, but keep only demographic,
@@ -222,7 +223,7 @@ method <- c(
   )
 ```
 
-We perform five (5) imputations
+Let’s generate five imputations
 
 ``` r
 set.seed(11)
@@ -269,8 +270,9 @@ pca <- prcomp(ob, scale. = TRUE)
 kclusts <- kmeans(scale(ob), centers = 2, nstart = 20)
 ```
 
-PCA of obesity data overlaid with k-means (k=2) clusters. No clustering
-accoring to sex.
+PCA of obesity data overlaid with k-means (k=2) clusters.
+
+> No clustering accoring to sex.
 
 ``` r
 ob$cluster <- kclusts$cluster
@@ -372,45 +374,12 @@ Rhats are large, but visual evaluation of density and trace plots (not
 shown as it’s extensive and has diagnostic purpose) of MCMC draws
 indicate that model has nicely converged.
 
-``` r
-plot(fit_imp1, ask = FALSE)
-```
-
 Despite warnings, all sub-models fitted to 5 separate imputations have
 nicely converged
 
-``` r
-round(fit_imp1$rhats, 2)
-```
-
-      b_Intercept b_Gender b_Age b_FHO b_FAVC b_FCVC b_NCP b_CAECFrequently
-    1           1        1     1     1      1      1     1                1
-    2           1        1     1     1      1      1     1                1
-    3           1        1     1     1      1      1     1                1
-    4           1        1     1     1      1      1     1                1
-    5           1        1     1     1      1      1     1                1
-      b_CAECno b_CAECSometimes b_SMOKE b_CH2O b_SCC b_FAF b_TUE b_CALCno
-    1        1               1       1   1.01     1     1     1        1
-    2        1               1       1   1.00     1     1     1        1
-    3        1               1       1   1.00     1     1     1        1
-    4        1               1       1   1.00     1     1     1        1
-    5        1               1       1   1.00     1     1     1        1
-      b_CALCSometimes b_MTRANSBike b_MTRANSMotorbike b_MTRANSPublic_Transportation
-    1               1            1                 1                             1
-    2               1            1                 1                             1
-    3               1            1                 1                             1
-    4               1            1                 1                             1
-    5               1            1                 1                             1
-      b_MTRANSWalking lprior lp__
-    1               1      1    1
-    2               1      1    1
-    3               1      1    1
-    4               1      1    1
-    5               1      1    1
-
 ### Testing model predictive performance
 
-Imputing previously created test data
+Imputing **test** data
 
 ``` r
 set.seed(56)

@@ -122,7 +122,7 @@ test %>%
 Just to visualize my knowledge of the variables, let's create a graph.
 
 Notably:    
-- Obesity is defined by BMI>30 and BMI of cause is calculated as $kg/m^2$. 
+- Obesity is defined by BMI>30 and BMI of cause is calculated as $kg/m^2$.     
 - WeightClass is determined by the body weight and height.
 
 Let's include weight and height for imputations, as we want to get as good/realistic dataset as possible, but keep only demographic, lifestyle, etc. parameters for prediction.
@@ -178,7 +178,7 @@ method <- c(
   )
 ```
 
-We perform five (5) imputations
+Let's generate five imputations
 ```{r}
 set.seed(11)
 imp_train <- mice(train, m = 5, method = method, print = FALSE)
@@ -207,7 +207,10 @@ kclusts <- kmeans(scale(ob), centers = 2, nstart = 20)
 ```
 
 
-PCA of obesity data overlaid with k-means (k=2) clusters. No clustering accoring to sex.
+PCA of obesity data overlaid with k-means (k=2) clusters.     
+
+> No clustering accoring to sex.
+
 ```{r}
 ob$cluster <- kclusts$cluster
 autoplot(
@@ -250,19 +253,19 @@ summary(fit_imp1)
 ```
 
 Rhats are large, but visual evaluation of density and trace plots (not shown as it's extensive and has diagnostic purpose) of MCMC draws indicate that model has nicely converged.
-```{r, eval=FALSE}
+```{r, eval=FALSE, include=FALSE}
 plot(fit_imp1, ask = FALSE)
 ```
 
 
 Despite warnings, all sub-models fitted to 5 separate imputations have nicely converged
-```{r}
+```{r, eval=FALSE, include=FALSE}
 round(fit_imp1$rhats, 2)
 ```
 
 ### Testing model predictive performance
 
-Imputing previously created test data
+Imputing **test** data
 ```{r}
 set.seed(56)
 imp_test <- mice(test, m = 1, method = method, print = FALSE)
