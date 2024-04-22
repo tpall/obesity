@@ -1,0 +1,530 @@
+---
+title: "Problems"
+format: gfm
+engine: knitr
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+
+```{r, message=FALSE}
+library(tidyverse)
+library(here)
+library(mice)
+library(skimr)
+library(brms)
+library(yardstick)
+library(tidybayes)
+library(tidymodels)
+library(broom.mixed)
+library(ggfortify)
+```
+
+
+## 1. Write bash script to split data into separate files based on gender and weight class.
+
+```{bash}
+bash scripts/split.sh data/obesity.data.txt
+```
+
+## 2. Impute missing data.
+
+### Importing original dataset
+
+```{r}
+col_types <- cols(
+  Gender = col_character(),
+  Age = col_double(),
+  Height = col_double(),
+  Weight = col_double(),
+  FHO = col_character(),
+  FAVC = col_character(),
+  FCVC = col_double(),
+  NCP = col_double(),
+  CAEC = col_character(),
+  SMOKE = col_character(),
+  CH2O = col_double(),
+  SCC = col_character(),
+  FAF = col_double(),
+  TUE = col_double(),
+  CALC = col_character(),
+  MTRANS = col_character(),
+  WeightClass = col_double()
+)
+obesity <- read_tsv(here("data/obesity.data.txt"), col_types = col_types)
+```
+
+
+Let's have a look at the data: 
+
+- Most variables miss ~30% of observations,
+- Gender ja WeightClass are 100% complete,
+- Categorical variables Gender, FHO, FAVC, SMOKE, SCC are binary
+
+```{r, render = knitr::normal_print}
+skim(obesity)
+```
+
+ 
+### Transform data
+
+- let's code response WeightClass as binary variable obese == 1,
+- there is one observation with CALC=="Always", we change this to "Frequently" to keep things sane (otherwise it will break things up down the road, as one way or another way we may end up predicting new levels),
+- transform categorical variables with two levels to binary no == 0 ja Female == 0,
+- remaining categorical variables converting to factors, as mice likes factors,
+- center and standardize Age, Height, Weight and numeric categories by using fixed values, so that they can be used independently on train and test sets
+
+```{r}
+obesity_trans <- obesity %>% 
+  mutate(
+    obese = case_when(
+    is.na(WeightClass) ~ NA, 
+    WeightClass == 4 ~ 1,
+    TRUE ~ 0
+  ),
+  Gender = case_when(is.na(Gender) ~ NA, Gender == "Female" ~ 0, TRUE ~ 1),
+  CALC = if_else(CALC == "Always", "Frequently", CALC),
+  Age = (Age - 40) / 10,
+  Height = (Height - 1.7) / 0.1,
+  Weight = (Weight - 80) / 10,
+  id = row_number() # setup id for splitting and reshaping
+  ) %>% 
+  mutate_at(vars(FHO, FAVC, SMOKE, SCC), ~case_when(is.na(.x) ~ NA, .x == "no" ~ 0, TRUE ~ 1)) %>% 
+  mutate_at(vars(FCVC, NCP, CH2O, FAF, TUE), ~.x / 4) %>% 
+  mutate_if(is.character, as.factor)
+
+obesity_trans %>% 
+  write_csv(here("output/obesity_trans.csv"))
+```
+
+### Split data to train and test set
+
+```{r}
+set.seed(184)
+train <- obesity_trans %>% 
+  sample_frac(0.7)
+test <- obesity_trans %>% 
+  anti_join(train, by = "id")
+```
+
+
+```{r, include=FALSE}
+train %>% 
+  write_csv(here("output/train.csv"))
+test %>% 
+  write_csv(here("output/test.csv"))
+```
+
+### Imputation
+
+Just to visualize my knowledge of the variables, let's create a graph.
+
+Notably:    
+- Obesity is defined by BMI>30 and BMI of cause is calculated as $kg/m^2$. 
+- WeightClass is determined by the body weight and height.
+
+Let's include weight and height for imputations, as we want to get as good/realistic dataset as possible, but keep only demographic, lifestyle, etc. parameters for prediction.
+
+```{r}
+library(dagitty)
+g1 <- dagitty("dag {
+    BMI -> WeightClass
+    Weight -> BMI <- Height
+    Age -> Height -> Weight
+    Gender -> Height
+    Gender -> SMOKE
+    Gender -> FCVC
+    FHO -> Weight
+    FAVC -> Weight
+    NCP -> Weight
+    CAEC -> Weight
+    SCC -> Weight
+    FAF -> Weight
+    Age -> MTRANS
+    Gender -> CALC
+    Age -> CALC
+    Age -> TUE
+    SMOKE -> Weight
+    CALC -> SMOKE
+}")
+plot(graphLayout(g1))
+```
+
+
+Let's use `mice` package to impute missing values using following methods:
+```{r}
+method <- c(
+  Gender = "", 
+  Age = "norm",
+  Height = "norm",
+  Weight = "norm",
+  FHO = "logreg",
+  FAVC = "logreg",
+  FCVC = "norm",        
+  NCP = "norm",
+  CAEC = "polyreg", 
+  SMOKE = "logreg", 
+  CH2O = "norm", 
+  SCC = "logreg", 
+  FAF = "norm",
+  TUE = "norm",
+  CALC = "polyreg",
+  MTRANS = "polyreg",
+  WeightClass = "",
+  obese = "",
+  id = ""
+  )
+```
+
+We perform five (5) imputations
+```{r}
+set.seed(11)
+imp_train <- mice(train, m = 5, method = method, print = FALSE)
+```
+
+
+## 3. Perform cluster analyses: do samples cluster by sex/Gender?
+
+Pulling out first imputed dataset
+```{r}
+(imp_train_df <- complete(imp_train) %>% as_tibble())
+```
+
+Transform categorical variables to numeric categories
+```{r}
+ob <- imp_train_df %>% 
+  select(-id, -obese, -WeightClass) %>% 
+  mutate_if(is.factor, as.numeric)
+```
+
+
+#### PCA + k-means
+```{r}
+pca <- prcomp(ob, scale. = TRUE)
+kclusts <- kmeans(scale(ob), centers = 2, nstart = 20)
+```
+
+
+PCA of obesity data overlaid with k-means (k=2) clusters. No clustering accoring to sex.
+```{r}
+ob$cluster <- kclusts$cluster
+autoplot(
+  pca, 
+  data = ob %>% mutate_at(c("Gender", "cluster"), as.factor), 
+  loadings = TRUE, 
+  loadings.label = TRUE,
+  color = "Gender") +
+  coord_equal() +
+  stat_ellipse(aes(linetype = factor(cluster))) +
+  scale_color_discrete("Sex", labels = c("Female", "Male")) +
+  scale_linetype_discrete("K-means", labels = c("cluster 1", "cluster 2"))
+```
+
+## 4. Train a suitable machine learning tool to predict obesity using the dataset and describe performance of the trained model.
+
+### Model fitting
+
+Multiple-imputed datasets can be used to fit Stan models using `brms` package.
+```{r, eval=FALSE}
+fit_imp1 <- brm_multiple(
+  obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS, 
+  data = imp_train, 
+  family = "bernoulli",
+  prior = prior(normal(0, 1), class = "b"),
+  combine = TRUE,
+  file = here("output/fit_imp1"),
+  file_refit = "always"
+  )
+```
+
+
+```{r, include=FALSE}
+fit_imp1 <- read_rds(here("output/fit_imp1.rds"))
+```
+
+
+```{r}
+summary(fit_imp1)
+```
+
+Rhats are large, but visual evaluation of density and trace plots (not shown as it's extensive and has diagnostic purpose) of MCMC draws indicate that model has nicely converged.
+```{r, eval=FALSE}
+plot(fit_imp1, ask = FALSE)
+```
+
+
+Despite warnings, all sub-models fitted to 5 separate imputations have nicely converged
+```{r}
+round(fit_imp1$rhats, 2)
+```
+
+### Testing model predictive performance
+
+Imputing previously created test data
+```{r}
+set.seed(56)
+imp_test <- mice(test, m = 1, method = method, print = FALSE)
+imp_test_list <- complete(imp_test, "all")
+```
+
+Generating ROC curve for each posterior draw
+```{r}
+get_roc_values <- function(newdata, object, ...) {
+  resp_var <- formula(object)[["formula"]][[2]]
+  resp_var <- enquo(resp_var)
+  add_epred_draws(newdata, object, ...) %>% 
+    ungroup() %>% 
+    mutate(!!resp_var := as.factor(!!resp_var)) %>% 
+    split(.$.draw) %>%
+    map_dfr(~roc_curve(., truth = !!resp_var, .epred, event_level = "second"), .id = ".draw") 
+}
+```
+
+
+```{r}
+roc_vals <- imp_test_list %>% 
+  map(~get_roc_values(.x, object = fit_imp1, ndraws = 200)) %>% 
+  bind_rows(.id = "imputation")
+```
+
+Lets print out ROC curve only the first imputation.
+```{r}
+roc_vals %>% 
+  filter(imputation == 1) %>% 
+  ggplot(aes(1 - specificity, sensitivity, group = .draw)) +
+  geom_path(alpha = 0.1) +
+  geom_abline(lty = 3) +
+  facet_wrap(~str_c("Imputation ", imputation)) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  coord_equal() +
+  labs(title = "GLM")
+```
+
+
+```{r}
+imp_test_list[[1]] %>% 
+  add_epred_draws(fit_imp1, newdata = ., ndraws = 200) %>% 
+  group_by(.draw) %>% 
+  nest() %>% 
+  mutate(
+    data = map(data, mutate_at, "obese", as.factor),
+    roc_auc = map(data, ~roc_auc(.x, obese, .epred, event_level = "second"))
+    ) %>% 
+  select(.draw, roc_auc) %>% 
+  unnest(roc_auc) %>% 
+  ungroup() %>% 
+  mean_hdi(.estimate)
+```
+
+```{r}
+imp_test_list[[1]] %>% 
+  predicted_draws(fit_imp1, newdata = ., ndraws = 200) %>% 
+  group_by(.draw) %>% 
+  summarise(accuracy = mean(obese == .prediction)) %>% 
+  mean_hdi(accuracy)
+```
+
+
+#### Random forest model
+
+```{r, include=FALSE}
+imp_train_df <- imp_train_df %>% mutate_at("obese", as.factor)
+imp_test_df <- imp_test_list[[1]] %>% mutate_at("obese", as.factor)
+```
+
+Fitting RF model
+```{r}
+rf_mod <- 
+  rand_forest(trees = 1000) %>% 
+  set_engine("ranger") %>% 
+  set_mode("classification")
+rf_fit <- 
+  rf_mod %>% 
+  fit(
+    obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS, 
+    data = imp_train_df
+  )
+print(rf_fit, digits = 5)
+```
+
+RF model performance with trainingset using 10-fold cross validation
+```{r}
+rf_wf <- 
+  workflow() %>%
+  add_model(rf_mod) %>%
+  add_formula(obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS)
+
+# generate cv folds
+set.seed(345)
+folds <- vfold_cv(imp_train_df, v = 10)
+folds
+```
+
+Refit model to trainset cv folds 
+```{r}
+set.seed(456)
+rf_fit_rs <- 
+  rf_wf %>% 
+  fit_resamples(folds)
+collect_metrics(rf_fit_rs)
+```
+
+RF model performance with the test set.
+
+```{r}
+rf_test_pred <- 
+  predict(rf_fit, imp_test_df) %>% 
+  bind_cols(predict(rf_fit, imp_test_df, type = "prob")) %>% 
+  bind_cols(imp_test_df %>% 
+              select(obese))
+```
+
+
+```{r}
+rf_test_pred %>%  
+  roc_curve(truth = obese, .pred_1, event_level = "second") %>% 
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  labs(title = "RF model")
+```
+
+- ROC AUC
+```{r}
+rf_test_pred %>%                
+  roc_auc(truth = obese, .pred_1, event_level = "second")
+```
+
+- RF model accuracy with testset
+```{r}
+rf_test_pred %>%  
+  accuracy(truth = obese, .pred_class)
+```
+
+
+#### Gradient boost model
+
+Setting up and fitting model with xgboost
+```{r}
+bt_mod <- 
+    boost_tree(trees = 15) %>% 
+    set_mode("classification") %>% 
+    set_engine("xgboost")
+bt_fit <- 
+  bt_mod %>% 
+  fit(
+    obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS, 
+    data = imp_train_df
+  )
+print(bt_fit, digits = 5)
+```
+
+
+```{r}
+bt_test_pred <- 
+  predict(bt_fit, imp_test_df) %>% 
+  bind_cols(predict(bt_fit, imp_test_df, type = "prob")) %>% 
+  bind_cols(imp_test_df %>% 
+              select(obese))
+```
+
+
+```{r}
+bt_test_pred %>%  
+  roc_curve(truth = obese, .pred_1, event_level = "second") %>% 
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  labs(title = "Gradient boost model")
+```
+
+
+- ROC AUC
+```{r}
+bt_test_pred %>%                
+  roc_auc(truth = obese, .pred_1, event_level = "second")
+```
+
+- Gradient boost model accuracy with testset
+```{r}
+bt_test_pred %>%  
+  accuracy(truth = obese, .pred_class)
+```
+
+
+#### Another Stan GLM with parsnip
+
+```{r}
+bayes_mod <-   
+  logistic_reg() %>% 
+  set_engine("stan", 
+             prior_intercept = rstanarm::student_t(3, 0, 2.5), 
+             prior = rstanarm::normal(0, 1),
+             family = "binomial"
+             ) %>% 
+  set_mode("classification")
+```
+
+Fit the Bayes GLM model
+```{r}
+bayes_fit <- 
+  bayes_mod %>% 
+  fit(
+    obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS, 
+    data = imp_train_df
+  )
+print(bayes_fit, digits = 5)
+```
+
+
+```{r}
+bayes_wf <- 
+  workflow() %>%
+  add_model(bayes_mod) %>%
+  add_formula(obese ~ Gender + Age + FHO + FAVC + FCVC + NCP + CAEC + SMOKE + CH2O + SCC + FAF + TUE + CALC + MTRANS)
+
+bayes_fit_rs <- 
+  bayes_wf %>% 
+  fit_resamples(folds)
+collect_metrics(bayes_fit_rs)
+```
+
+Test set predictions from this Bayes model
+```{r}
+bayes_test_pred <- 
+  predict(bayes_fit, imp_test_df) %>% 
+  bind_cols(predict(bayes_fit, imp_test_df, type = "prob")) %>% 
+  bind_cols(imp_test_df %>% 
+              select(obese)) %>% 
+  mutate_at("obese", as.factor)
+```
+
+
+```{r}
+bayes_test_pred %>%  
+  roc_curve(truth = obese, .pred_1, event_level = "second") %>% 
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  labs(title = "Bayes GLM")
+```
+
+
+```{r}
+bayes_test_pred %>%                
+  roc_auc(truth = obese, .pred_1, event_level = "second")
+```
+
+
+```{r}
+bayes_test_pred %>%
+  accuracy(truth = obese, .pred_class)
+```
+
+
